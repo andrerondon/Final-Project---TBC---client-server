@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products, only: [:index, :show, :create, :update, :destroy]
+  resources :orders, only: [:index, :show, :create, :update, :destroy]
+  resources :users, only: [:index, :show, :create, :update, :destroy]
+  resource :session, only: [:create, :destroy]
+
 
   get("/", to: "welcome#root") 
 

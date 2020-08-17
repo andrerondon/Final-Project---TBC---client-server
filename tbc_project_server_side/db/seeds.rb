@@ -11,16 +11,19 @@
 Product.delete_all
 User.delete_all
 
-NUM_PRODUCTS = 15
+NUM_USER = 15
 PASSWORD = '12345'
-
+NUM_PRODUCTS = 15
+PRICE = '15.00'
+PHONE = '9999999'
+ADDRESS = '303 victoria dr'
 
 super_user = User.create(
     first_name: 'jon',
     last_name: 'snow',
     email: 'js@winterfell.gov',
-    address: '303 victoria dr'
-    phone: '999999999'
+    address: ADDRESS,
+    phone: PHONE,
     password: PASSWORD
 )
 
@@ -31,11 +34,13 @@ NUM_USER.times do
         first_name: first_name,
         last_name: last_name,
         email: Faker::Internet.email,
-        password: PASSWORD
-        address: address
-            phone: phone
+        password: PASSWORD,
+        address: ADDRESS,
+        phone: PHONE
     )
 end
+
+users = User.all
 
 PRICE = '15.00'
 
@@ -46,16 +51,14 @@ NUM_PRODUCTS.times do
         category: Faker::ChuckNorris.fact,
         price: PRICE,
         description: Faker::Hacker.say_something_smart,
-        # user: users.sample, # array method that randomly picks something from an array
         created_at: created_at,
         updated_at: created_at
     ) 
-    end
 end
 
 
 product = Product.all 
-users = User.all
+
 
 puts Cowsay.say("Generated #{product.count} products", :frogs)
 puts Cowsay.say("Generated #{users.count} users", :sheep)

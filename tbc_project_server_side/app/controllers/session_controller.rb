@@ -15,7 +15,7 @@ class SessionController < ApplicationController
     else
       flash[:warning] = "Couldn't log In"
       flash[:secondary] = "yikes"
-      flash[:dasfdsfadsfsd] = 'adsfads'
+      # flash[:dasfdsfadsfsd] = 'adsfads'
       render :new
     end
   end
