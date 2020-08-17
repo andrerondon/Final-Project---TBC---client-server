@@ -1,4 +1,8 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
+
+  def new
+ 
+  end
 
   def create
     user = User.find_by_email params[:email]
@@ -11,7 +15,7 @@ class SessionController < ApplicationController
       # A cookie is just a string of key value pairs
       # { session: {user_id: 384, color: 'blue'} }
       flash[:success] = "User Logged In"
-      redirect_to questions_path
+      redirect_to product_path
     else
       flash[:warning] = "Couldn't log In"
       flash[:secondary] = "yikes"
@@ -22,6 +26,6 @@ class SessionController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to questions_path
+    redirect_to product_path
   end
 end

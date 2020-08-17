@@ -24,7 +24,7 @@ super_user = User.create(
     email: 'js@winterfell.gov',
     address: ADDRESS,
     phone: PHONE,
-    password: PASSWORD
+    password_digest: PASSWORD
 )
 
 NUM_USER.times do
@@ -34,7 +34,7 @@ NUM_USER.times do
         first_name: first_name,
         last_name: last_name,
         email: Faker::Internet.email,
-        password: PASSWORD,
+        password_digest: PASSWORD,
         address: ADDRESS,
         phone: PHONE
     )
@@ -62,3 +62,7 @@ product = Product.all
 
 puts Cowsay.say("Generated #{product.count} products", :frogs)
 puts Cowsay.say("Generated #{users.count} users", :sheep)
+
+
+
+  
