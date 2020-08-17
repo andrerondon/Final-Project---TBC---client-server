@@ -33,7 +33,7 @@ NUM_USER.times do
         email: Faker::Internet.email,
         password: PASSWORD
         address: address
-        phone: phone
+            phone: phone
     )
 end
 
