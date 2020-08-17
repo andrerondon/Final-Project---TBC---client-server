@@ -6,10 +6,10 @@ class UsersController < ApplicationController
         end
       
         def create
-          @user = User.new params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+          @user = User.new params.require(:user).permit(:first_name, :last_name, :email, :password_digest, :password_confirmation)
           if @user.save
             flash.delete(:warning)
-            redirect_to questions_path
+            redirect_to products_path
           else
             flash[:warning] = "unable to create user"
             render :new

@@ -5,14 +5,17 @@ class ProductsController < ApplicationController
             render index
           end
 
+          # only admin will create, update and delete
+
           def new
             @product = Product.new
-            @product.user = admin_user
+            @product.user = admin_user   
           end
         
           def create
             @product = Product.new params.require(:product).permit(:name, :category, :description, :price, :img_url)
             @product.user = admin_user
+             
             if products.save
               render (id: @products.id)
             else
