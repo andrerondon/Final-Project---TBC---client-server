@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :password_digest
       t.string :address
       t.integer :phone
+      t.boolean :is_admin
       # add a flag for admin
 
       t.timestamps
