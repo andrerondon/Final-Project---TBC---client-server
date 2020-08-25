@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   get("/", to: "static_pages#root")
   get("/menu", to: "static_pages#menu")
+  get("/contact", to: "static_pages#contact")
+  get("/whoweare", to: "static_pages#whoweare")
+
   get("/cart", to: "sessions#cart") 
 
   
