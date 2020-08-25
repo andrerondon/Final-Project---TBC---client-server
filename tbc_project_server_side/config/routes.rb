@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
 
-  get("/", to: "welcome#root")
-  get("/menu", to: "products#menu")
+  get("/", to: "static_pages#root")
+  get("/menu", to: "static_pages#menu")
   get("/cart", to: "sessions#cart") 
 
   
