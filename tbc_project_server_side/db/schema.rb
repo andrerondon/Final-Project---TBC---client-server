@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_204135) do
     t.string "password_digest"
     t.string "address"
     t.integer "phone"
+    t.boolean "is_admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

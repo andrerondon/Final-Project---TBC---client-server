@@ -11,12 +11,14 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :products, only: [:index, :show, :create, :update, :destroy]
-  # resources :orders, only: [:index, :show, :create, :update, :destroy]
-  # resources :users, only: [:index, :show, :create, :update, :destroy]
+  resources :products, only: [:index, :show, :new, :create, :update, :destroy]
+  resources :orders, only: [:index, :show, :create, :update, :destroy]
+  resources :users, only: [:index, :show, :new, :create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
 
-  get("/", to: "welcome#root") 
+  get("/", to: "welcome#root")
+
+  get("/cart", to: "sessions#cart") 
 
   
 end

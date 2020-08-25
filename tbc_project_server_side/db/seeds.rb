@@ -8,13 +8,11 @@
 
 
 
-Product.delete_all
+# Product.delete_all
 User.delete_all
 
 NUM_USER = 15
 PASSWORD = '12345'
-NUM_PRODUCTS = 15
-PRICE = '15.00'
 PHONE = '9999999'
 ADDRESS = '303 victoria dr'
 
@@ -24,7 +22,8 @@ super_user = User.create(
     email: 'js@winterfell.gov',
     address: ADDRESS,
     phone: PHONE,
-    password_digest: PASSWORD
+    password: PASSWORD,
+    password_confirmation: PASSWORD
 )
 
 NUM_USER.times do
@@ -34,33 +33,31 @@ NUM_USER.times do
         first_name: first_name,
         last_name: last_name,
         email: Faker::Internet.email,
-        password_digest: PASSWORD,
+        password: PASSWORD,
+        password_confirmation: PASSWORD,
         address: ADDRESS,
         phone: PHONE
     )
 end
-
 users = User.all
 
-PRICE = '15.00'
-
-NUM_PRODUCTS.times do 
-    created_at = Faker::Date.backward(days: 365 * 5)
-    p = Product.create(
-        name: Faker::Hacker.say_something_smart,
-        category: Faker::ChuckNorris.fact,
-        price: PRICE,
-        description: Faker::Hacker.say_something_smart,
-        created_at: created_at,
-        updated_at: created_at
-    ) 
-end
-
-
-product = Product.all 
+# NUM_PRODUCTS = 15
+# PRICE = '15.00'
+# NUM_PRODUCTS.times do 
+#     created_at = Faker::Date.backward(days: 365 * 5)
+#     p = Product.create(
+#         name: Faker::Hacker.say_something_smart,
+#         category: Faker::ChuckNorris.fact,
+#         price: PRICE,
+#         description: Faker::Hacker.say_something_smart,
+#         created_at: created_at,
+#         updated_at: created_at
+#     ) 
+# end
+# product = Product.all 
 
 
-puts Cowsay.say("Generated #{product.count} products", :frogs)
+# puts Cowsay.say("Generated #{product.count} products", :frogs)
 puts Cowsay.say("Generated #{users.count} users", :sheep)
 
 

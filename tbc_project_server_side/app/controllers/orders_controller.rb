@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 
     def show
         order = Order.find(params[:id])
-        render order
+        render :cart
     end
 
     def create

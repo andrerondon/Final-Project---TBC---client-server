@@ -4,11 +4,12 @@ class ProductsController < ApplicationController
             @products = Product.all.order('updated_at DESC')
           end
 
-          # only admin will create, update and delete
+
+          # ALL BELLOWS TO ONLY ADMIN
 
           def new
             @product = Product.new
-            # @product.user = admin_user   
+            render :new   
           end
         
           def create
@@ -22,14 +23,14 @@ class ProductsController < ApplicationController
           end
 
           def show
-            @products = Product.all.order('updated_at DESC')
+            id = params[:id]
+            @product = Product.find(id)
           end
       
           def update
               id = params[:id]
               @product = Product.find(id)
-              # @product.user = admin_user
-              if @product.update(params.require(:product).permit(:name, :category, :description, :price, :img_url)
+              if @product.update(params.require(:product).permit(:name, :category, :description, :price, :img_url))
                 redirect_to product_path(@product)
               else
                 render :edit
@@ -41,7 +42,6 @@ class ProductsController < ApplicationController
               @product = Product.find(id)
               @product.destroy
               render :new
-              # @product.user = admin_user
               # redirect_to product_path
               # if product.destroy
               #   render(json: {message: `#{product.name} with #{product.id} this product has been deleted`})
