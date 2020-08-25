@@ -5,12 +5,12 @@
     <p class='shadow-none p-3 mb-5 bg-light rounded'><%= @product.name %></p>
 
     <h1><%= @product.description %></h1>
-    </span>
-    <%= @product.description %>
+  </span>
+  <%= @product.description %>
 
   <h1>$<%= @product.price %></h1>
 
-   <%# DISPLAYING IMAGE %>
+  <%# DISPLAYING IMAGE %>
    <%= image_tag @product.img_url.variant(resize: '500x500') %>
   <%#= image_tag @product.img_url %>
     </span>
@@ -20,6 +20,8 @@
 
 
   <%# link_to arguments: name, path, options_object %>
+
+  <%# shopping cart button %>
   <div>
    <%= link_to(
       "+ add cart",
@@ -35,6 +37,11 @@
       data: { confirm: 'are you sure?' }
     )
     %>
+    <%# shopping cart button %>
+
+
+
+    <%# edit and delete button %>
     <%#= link_to(
       "Edit",
       product_path(@product),

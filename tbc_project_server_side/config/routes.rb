@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   get("/", to: "welcome#root")
-
+  get("/menu", to: "products#menu")
   get("/cart", to: "sessions#cart") 
 
   
