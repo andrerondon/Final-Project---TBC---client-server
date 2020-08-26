@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
         
           def create
             @product = Product.new params.require(:product).permit(:name, :category, :description, :price, :img_url)
-            # @product.user = admin_user
             if @product.save
               redirect_to product_path(@product)
             else
@@ -44,15 +43,11 @@ class ProductsController < ApplicationController
               @product = Product.find(id)
               @product.destroy
               render :new
-              # redirect_to product_path
-              # if product.destroy
-              #   render(json: {message: `#{product.name} with #{product.id} this product has been deleted`})
-              # else
-              #   render(
-              #       json: {errors: product.errors, message: `#{product.name} with #{product.id} this product wasn't deleted`},
-              #       status: 422
-              #   )
-              # end
+              if @product.destroy
+                flash[:warning] = "this product has been deleted"
+              else
+                flash[:warning] = "this product wasn't deleted"
+              end
           end
   
     

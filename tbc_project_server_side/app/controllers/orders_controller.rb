@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
     end
 
     def show
-        order = Order.find(params[:id])
-        render :cart
+        order = Order.all(params[:id])
+        render :show
     end
-
+  
     def create
         order = Order.new params.require(:order).permit(:user_id, :address, :email)
         order.user = current_user
@@ -38,9 +38,9 @@ class OrdersController < ApplicationController
         id = params[:id]
         order = Order.find(id)
         if order.update(params.require(:order).permit(:user_id, :shipping_address, :email, :status))
-          render json: order
+          render order
         else
-          render (json: {errors: order.errors, message: `order for user with id #{order.userId} could not be updated`})
+          render {errors: order.errors, message: `order for user with id #{order.userId} could not be updated`}
         end
     end
 
