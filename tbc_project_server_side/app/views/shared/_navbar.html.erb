@@ -1,18 +1,26 @@
-<nav class='navbar navbar-expand-lg navbar-light bg-light'>
+<%# <nav class='navbar navbar-expand-lg navbar-light'> %>
+<nav class=''>
   <ul class='navbar-nav mr-auto '>
-      
         <div class="topnav">
           <%= image_tag("logo_tbc.png", width: '150px') %>     
-          <a class="active" href="/">Home</a>
-                
-          <a class="" href="/whoweare">Who we are</a>
+          <a class="btn btn-success" href="/">Home</a>    
+          <a class="btn btn-success" href="/whoweare">Who we are</a>
+          <a class="btn btn-success" href="/menu">Food Menu</a>
+          <a class="btn btn-success" href="/cart">Your Orders</a>
+          <a class="btn btn-success" href="/contact">Contact</a>
+          <a>
+          <%# Log In button %>
+            <% if user_signed_in? %>
+              <%# this button created by link_to DELETE /session %>
+              <%= link_to "Logout", session_path, method: :delete, class: 'btn btn-danger' %>
+              <%#= current_user.first_name %> <%#= current_user.last_name %>
+            <% else %>
+              <%= link_to "Log In", new_session_path, class: 'btn btn-success'%>
+            <% end %>
+            
 
-          <a href="/menu">Food Menu</a>
-          <%# <a href="/products">Food Menu</a> %>
-          <a href="/cart">Your Orders</a>
-          <a href="/contact">Contact</a>
-          <a href="/session/new">Log in</a>
-        </div> 
+  </div>
+
   </ul>
 </div>
 
