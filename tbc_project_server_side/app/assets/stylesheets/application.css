@@ -46,9 +46,9 @@
     color: white;
   }
 
-  .cardtbc{
-    display: grid;
-    background-color: black;
+  .container > .cardtbc{
+    display: flex;
+    align-content: center;
   }
 
  

@@ -11,12 +11,11 @@
   <h1>$<%= @product.price %></h1>
 
   <%# DISPLAYING IMAGE %>
-   <%= image_tag @product.img_url.variant(resize: '500x500') %>
-  <%#= image_tag @product.img_url %>
+    <%= image_tag @product.img_url.variant(resize: '500x500') %>
+
     </span>
-  <%# if @product.img_url? %>
-    <%#= image_tag @product.img_url %>
-  <%# end %>
+      <% if @product.img_url? %>
+      <% end %>
 
 
   <%# link_to arguments: name, path, options_object %>
