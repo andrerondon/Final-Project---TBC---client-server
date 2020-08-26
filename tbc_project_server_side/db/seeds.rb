@@ -26,20 +26,29 @@ super_user = User.create(
     password_confirmation: PASSWORD
 )
 
-NUM_USER.times do
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name
-    User.create(
-        first_name: first_name,
-        last_name: last_name,
-        email: Faker::Internet.email,
-        password: PASSWORD,
-        password_confirmation: PASSWORD,
-        address: ADDRESS,
-        phone: PHONE
-    )
-end
-users = User.all
+# NUM_USER.times do
+#     first_name = Faker::Name.first_name
+#     last_name = Faker::Name.last_name
+#     User.create(
+#         first_name: first_name,
+#         last_name: last_name,
+#         email: Faker::Internet.email,
+#         password: PASSWORD,
+#         password_confirmation: PASSWORD,
+#         address: ADDRESS,
+#         phone: PHONE
+#     )
+# end
+# users = User.all
+# puts Cowsay.say("Generated #{users.count} users", :sheep)
+
+# o = Order.new
+# o.user = users
+# o.products = Product.all
+# o.save
+# order = Order.all
+
+# puts Cowsay.say("Generated #{orders.count} orders", :frogs)
 
 # NUM_PRODUCTS = 15
 # PRICE = '15.00'
@@ -58,7 +67,7 @@ users = User.all
 
 
 # puts Cowsay.say("Generated #{product.count} products", :frogs)
-puts Cowsay.say("Generated #{users.count} users", :sheep)
+
 
 
 

@@ -45,8 +45,12 @@
     background-color: #4CAF50;
     color: white;
   }
+  .welcome_page{
+    background-color: #333;
+  }
   .contact_us{
     background-color: #333;
+    padding: 10em;
   }
   .container > .cardtbc{
     background-color: white;

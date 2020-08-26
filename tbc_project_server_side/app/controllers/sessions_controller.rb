@@ -25,11 +25,9 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to products_path
+    redirect_to root_path
   end
-
-  # Cart with itens
-
+  
   def cart
     if session[:cart_items] == nil 
       session[:cart_items] = []

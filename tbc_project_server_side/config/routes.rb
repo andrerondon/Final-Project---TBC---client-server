@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
 
-  get("/", to: "static_pages#root")
+  get("/", to: "static_pages#root", as: 'root')
   get("/menu", to: "static_pages#menu")
   get("/contact", to: "static_pages#contact")
   get("/whoweare", to: "static_pages#whoweare")
