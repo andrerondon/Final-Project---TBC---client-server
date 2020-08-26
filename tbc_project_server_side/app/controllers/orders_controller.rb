@@ -25,11 +25,9 @@ class OrdersController < ApplicationController
         id = params[:id]
         order = Order.find(id)
         if order.destroy
-            render({message: `order for user with id #{order.userId} has been deleted`})
+          flash[:warning] = "this order has been deleted"
         else
-            render({errors: order.errors, message: `order for user with id #{order.userId} could not be deleted`},
-                status: 422
-            )
+          flash[:warning] = "this order wasn't deleted"
         end
     end
 
@@ -40,7 +38,7 @@ class OrdersController < ApplicationController
         if order.update(params.require(:order).permit(:user_id, :shipping_address, :email, :status))
           render order
         else
-          render {errors: order.errors, message: `order for user with id #{order.userId} could not be updated`}
+          flash[:warning] = "this order could not be updated"
         end
     end
 

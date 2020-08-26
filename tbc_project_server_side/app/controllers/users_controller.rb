@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       
         def edit
           # @user User.find session[:user_id]
-          @user = current_user # the current_user method already fetches the logged in user for us
+          @user = current_user # like a magica hahaha the current_user method already fetches the logged in user for us
         end
       
         def update

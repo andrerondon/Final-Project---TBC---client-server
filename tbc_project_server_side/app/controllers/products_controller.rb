@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show] 
+  before_action :authorize!, only: [:creat, :edit, :update, :destroy]
+
     
           def index
             @products = Product.all.order('updated_at DESC')
@@ -11,9 +14,10 @@ class ProductsController < ApplicationController
             @product = Product.new
             render :new   
           end
-        
+          
           def create
             @product = Product.new params.require(:product).permit(:name, :category, :description, :price, :img_url)
+            @product.user = current_user # only loged in user will do that
             if @product.save
               redirect_to product_path(@product)
             else
@@ -31,6 +35,7 @@ class ProductsController < ApplicationController
           def update
               id = params[:id]
               @product = Product.find(id)
+              @product.user = current_user # only loged in user will do that
               if @product.update(params.require(:product).permit(:name, :category, :description, :price, :img_url))
                 redirect_to product_path(@product)
               else
@@ -41,6 +46,12 @@ class ProductsController < ApplicationController
           def destroy
               id = params[:id]
               @product = Product.find(id)
+              @product.user = current_user # only loged in user will do that
+              # if user_signed_in?
+              #   flash[:warning] = "You must login"
+              # else
+              #   flash[:warning] = "you are not allowed"
+              # end
               @product.destroy
               render :new
               if @product.destroy
