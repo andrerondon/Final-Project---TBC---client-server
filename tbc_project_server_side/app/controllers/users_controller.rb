@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    class UsersController < ApplicationController
+    
         def new
           @user = User.new
           # form_with uses an instance to create a form
@@ -40,5 +40,5 @@ class UsersController < ApplicationController
             end
           end
         end
-    end
+    
 end
