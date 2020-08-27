@@ -10,6 +10,10 @@
       <%= f.password_field :password, class: 'form-control' %>
     </div>
     <%= f.submit "Sign In", class: 'btn btn-success'%>
+    <a>
+     <a href="/users/new"><%= f.submit "Sign UP", class: 'btn btn-success'%></a>
+     <a <%#= link_to "/users/new", "/users/new" f.submit "Sign UP", class: 'btn btn-success'%></a>
+    
   <% end %>
 </div>
 <%# This form submits to POST /session %>
