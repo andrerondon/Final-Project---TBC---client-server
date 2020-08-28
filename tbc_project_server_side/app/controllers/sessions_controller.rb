@@ -28,20 +28,18 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
   
-  def cart
-    if session[:cart_items] == nil 
-      session[:cart_items] = []
-    else
-      cart_items = session[:cart_items]
-      cart_items << params[:id]
-      session[:cart_items] = cart_items
-    end
-    products = Product.where(id: cart_items)
+  # def cart
+  #   if session[:cart_items] == nil 
+  #     session[:cart_items] = []
+  #   else
+  #     cart_items = session[:cart_items]
+  #     cart_items << params[:id]
+  #     session[:cart_items] = cart_items
+  #   end
+  #   products = Product.where(id: cart_items)
 
-    render :cart
-  end
-
-
+  #   render :cart
+  # end
 
 
 end

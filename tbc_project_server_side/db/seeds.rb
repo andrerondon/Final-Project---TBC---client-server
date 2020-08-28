@@ -11,7 +11,7 @@
 # Product.delete_all
 User.delete_all
 
-NUM_USER = 15
+NUM_USER = 50
 PASSWORD = '12345'
 PHONE = '9999999'
 ADDRESS = '303 victoria dr'
