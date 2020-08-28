@@ -1,3 +1,7 @@
+<h1> Show Page </h1>
+
+
+
 <div class='shadow-sm p-3 mb-5 bg-white rounded overflow-wrap'>
   <h1>
     <%# <span class='badge badge-pill badge-info'> %>
@@ -17,7 +21,8 @@
       <% if @product.img_url? %>
       <% end %>
 
-
+  </div>
+  
   <%# link_to arguments: name, path, options_object %>
 
   <%# shopping cart button %>
@@ -38,11 +43,10 @@
     )
     %>
      <%= link_to(
-      "- delete product",
+      "- delete from cart",
       product_path(@product),
       method: :delete,
-      class: 'btn btn-danger',
-      data: { confirm: 'are you sure?' }
+      class: 'btn btn-danger'
     )
     %>
     <%# shopping cart button %>

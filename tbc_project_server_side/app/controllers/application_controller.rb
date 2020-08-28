@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    include ApplicationHelper
+    
     private
 
     # returns current user if there is a current user

@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
           
           def create
             @product = Product.new params.require(:product).permit(:name, :category, :description, :price, :img_url)
-            @product.user = current_user # only loged in user will do that
+            # @product.user = current_user # only loged in user will do that
             if @product.save
               redirect_to product_path(@product)
             else
@@ -45,8 +45,9 @@ class ProductsController < ApplicationController
     
           def destroy
               id = params[:id]
+              # @product = Product.find_by(product_id: id)
               @product = Product.find(id)
-              @product.user = current_user # only loged in user will do that
+              # @product.user = current_user # only loged in user will do that
               # if user_signed_in?
               #   flash[:warning] = "You must login"
               # else

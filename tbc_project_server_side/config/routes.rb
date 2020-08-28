@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # get 'session/new'
   # get 'session/create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -22,6 +23,12 @@ Rails.application.routes.draw do
   get("/whoweare", to: "static_pages#whoweare")
 
   get("/cart", to: "sessions#cart") 
+
+  # from the tutorial - https://www.youtube.com/watch?v=rPmlA_T_J84
+  resources :shops, only: [:index, :show]
+  resources :order_items
+  resource :cards, only: [:show]
+
 
   
 end

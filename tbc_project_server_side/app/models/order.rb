@@ -1,7 +1,20 @@
 class Order < ApplicationRecord
     belongs_to :user
-    has_many :order_products
-    has_many :line_itens
-    has_many :products, through: :order_products
-    has_many :products, through: :line_itens
+    # has_many :order_products
+    # has_many :line_itens
+    # has_many :products, through: :order_products
+    # has_many :products, through: :line_itens
+    has_many :order_items
+    before_save :set_subtotal
+
+    def subtotal
+        order_items.collect{|order_item| order_item.valid? ? order_item.unit_price*order_item.quantity : 0}.sum
+    end
+
+    private
+
+    def set_subtotal
+        self[:subtotal] = subtotal
+    end
+
 end

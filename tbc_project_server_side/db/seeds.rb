@@ -22,6 +22,7 @@ super_user = User.create(
     email: 'js@winterfell.gov',
     address: ADDRESS,
     phone: PHONE,
+    is_admin: true,
     password: PASSWORD,
     password_confirmation: PASSWORD
 )
