@@ -3,7 +3,7 @@
     <div>
     <ul class="list-group row">
     <% puts product%>
-        <li class="list-group-item column"><%= link_to product.name, product_path(product) %></li>
+        <li class="list-group-item titletitle"><%= link_to product.name, product_path(product) %></li>
         <div class="column">
         <%# logic to show even without photo %>
             <% if product.img_url.attached? %>
