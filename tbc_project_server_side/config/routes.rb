@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :products, only: [:index, :show, :edit, :new, :create, :update, :destroy]
+  resources :products
   resources :orders, only: [:index, :show, :create, :update, :destroy]
-  resources :users, only: [:index, :show, :new, :create, :update, :destroy]
+  resources :users
   resource :session, only: [:new, :create, :destroy]
 
   get("/", to: "static_pages#root", as: 'root')
@@ -24,10 +24,11 @@ Rails.application.routes.draw do
 
   get("/cart", to: "sessions#cart") 
 
-  # from the tutorial - https://www.youtube.com/watch?v=rPmlA_T_J84
+  # https://www.youtube.com/watch?v=rPmlA_T_J84
   resources :shops, only: [:index, :show]
-  resources :order_items
+  resources :order_items, only: [:index, :show, :create, :destroy]
   resource :cards, only: [:show]
+  get 'cards/show'
 
 
   

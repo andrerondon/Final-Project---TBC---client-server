@@ -9,8 +9,8 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.is_admin?
         can :manage, :all
-        can :update, :all
-        can :destroy, :all
+        # can :update, :all
+        # can :destroy, :all
       else
         can :read, :all
       end

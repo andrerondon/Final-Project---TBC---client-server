@@ -1,3 +1,64 @@
+<h1>MENU</h1>
+<% @products.each do |product| %>
+    <div>
+    <ul class="list-group row">
+    <%# puts product%>
+        <li class="list-group-item titletitle"><%= link_to product.name, product_path(product) %></li>
+        <div class="column">
+        <%# logic to show even without photo %>
+            <% if product.img_url.attached? %>
+                <%= image_tag product.img_url.variant(resize: '500x500') %>
+            <% end %>
+        </div>
+        <tr>
+          <li class="list-group-item titletitle "><%= product.price %></li>
+        </tr>
+        <div class="cardbutoon">
+        <td>
+            <%= form_for @order_item, remote: true do |f|%>
+                <%= f.hidden_field :product_id, :value => product.id %>
+                <%= f.number_field :quantity, :value => 1, :min => 1 %>
+                
+                <%#= f.submit "Add do Card"%>
+                    <%= link_to(
+                      "+ add cart",
+                      shops_path(@order_item),
+                      class: 'btn btn-info'
+                    )
+                    %>
+                  <%= link_to(
+                    "remove from the Card",
+                    order_items_path(@order_item),
+                    method: :delete,
+                    class: 'btn btn-danger',
+                  )
+                  %>
+            <% end %>
+        </td>
+      </div>
+    </div>
+    </ul>
+<% end %>
+
+
+
+<div>
+<%= link_to(
+      "+ New Product",
+       new_product_path,
+      class: 'btn btn-info',
+       
+    )
+    %>
+</div>
+<%#= link_to 'New Product',  new_product_path %>
+
+
+
+
+
+
+
 <h1>Shops#index</h1>
 <p>Find me in app/views/shops/index.html.erb</p>
 <p id="notice"><%= notice %></p>
@@ -16,15 +77,33 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+
         <td><%= product.name %></td>
         <td><%= product.price %></td>
         <td><%= link_to 'Show', shops_path(product) %></td>
+        
 
         <td>
+
+       
             <%= form_for @order_item, remote: true do |f|%>
                 <%= f.hidden_field :product_id, :value => product.id %>
-                <%= f.hidden_field :quantity, :value => 1, :min => 1 %>
-                <%= f.submit "Add do Card"%>
+                <%= f.number_field :quantity, :value => 1, :min => 1 %>
+                
+                <%#= f.submit "Add do Card"%>
+                    <%= link_to(
+                      "+ add cart",
+                      shops_path(@order_item),
+                      class: 'btn btn-info'
+                    )
+                    %>
+                  <%= link_to(
+                    "remove from the Card",
+                    order_items_path(@order_item),
+                    method: :delete,
+                    class: 'btn btn-danger',
+                  )
+                  %>
             <% end %>
         </td>
 
